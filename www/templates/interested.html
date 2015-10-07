@@ -1,0 +1,38 @@
+<ion-view view-title="Interested People" ng-controller="InterestedCtrl">
+    <ion-content>
+        <ion-refresher pulling-text="Pull to refresh..." on-refresh="getInterested()"></ion-refresher>
+        <div class="list card" ng-repeat="user in interested">
+            <div class="item header">
+                <div ng-click="updateUserModal(user.userid)">
+                    <!--div style="width: 50%"-->
+                    <h2>Name: {{user.name}}</h2>
+                    <p>Email: {{user.email}}</p>
+                    <p>Phone Number: {{user.phone}}</p>
+                    <p>Location: {{user.location}}</p>
+                    <p>Caption: {{user.caption}}</p>
+                </div>
+                <!--/div-->
+
+                <!--div style="width: 30%"-->
+                <div class="item header">
+                  <div ng-click="showMessages(user.userid, user.name)">
+                    <div ng-switch on=messagesNotSeen[user.userid]>
+                        <div ng-switch-when=1>
+                          <span class="badge badge-assertive">1</span>
+                        </div>
+                        <div ng-switch-default>
+                        </div>
+                    </div>
+                    <div>
+                        <img ng-src="http://graph.facebook.com/{{user.userid}}/picture?width=270&height=270" />
+                        <div>
+                            <img ng-src="https://raw.githubusercontent.com/orealeb/Table-stylesheet/master/sendmessage2.png" class="sendmessage" />
+                        </div>
+
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

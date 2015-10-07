@@ -1,0 +1,24 @@
+<ion-view view-title="My Gigs" ng-controller="MyGigsCtrl">
+    <ion-content>
+    <ion-refresher pulling-text="Pull to refresh..." on-refresh="getPersonal()"></ion-refresher>
+      <div>
+        <div class="list card" ng-repeat="gig in personal | reverse">
+          <div class="item header header-click" >
+            <div  style="width: 90%;" ng-click="findInterested(gig._id, gig.interested.length)">
+              <h2>Lookin4: {{gig.position}}</h2>          
+              <p>Rate: ${{gig.rate}}</p>
+              <p>Date: {{gig.date|toDateString}}</p>
+              <p>Requested by: {{gig.name}}</p>
+              <div ng-if="gig.location">
+                <p>Location: {{gig.location}}</p>
+              </div>              
+              <p>Description: {{gig.description}}</p>
+              <p>Number Interested: {{gig.interested.length}}</p>
+            </div>
+            <div> <a class="item item-icon-right" style="color: #2C3E50" ng-click="deleteGig(gig._id)">
+                <i class="icon ion-trash-b"></i>
+            </a></div>          
+        </div>
+      </div>
+    </ion-content>
+</ion-view>

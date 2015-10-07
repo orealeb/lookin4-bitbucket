@@ -1,0 +1,56 @@
+{
+    "org.apache.cordova.inappbrowser": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/apache/cordova-plugin-inappbrowser.git",
+            "subdir": "."
+        }
+    },
+    "com.verso.cordova.clipboard": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/VersoSolutions/CordovaClipboard",
+            "subdir": "."
+        }
+    },
+    "cordova-plugin-inappbrowser": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/apache/cordova-plugin-inappbrowser.git",
+            "subdir": "."
+        }
+    },
+    "org.apache.cordova.network-information": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.network-information"
+        }
+    },
+    "org.apache.cordova.device": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.device"
+        }
+    },
+    "com.pushapps.phonegap": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/PushAppsService/PushAppsPhonegap.git",
+            "subdir": "."
+        }
+    },
+    "org.apache.cordova.geolocation": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.geolocation"
+        }
+    },
+    "com.pushwoosh.plugins.pushwoosh": {
+        "source": {
+            "type": "registry",
+            "id": "com.pushwoosh.plugins.pushwoosh"
+        },
+        "is_top_level": true,
+        "variables": {}
+    }
+}

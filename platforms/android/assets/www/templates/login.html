@@ -1,0 +1,45 @@
+<ion-header-bar class="bar-stable"  align-title="left">
+    <h1  class="title">Nearby Gigs!</h1>
+    <div class="buttons">
+        <button class="button button-block button-positive icon-left ion-social-facebook fb-login" ng-click="openModal()">Log In &nbsp&nbsp&nbsp&nbsp</button>
+    </div>
+    <!--a class="item item-icon-right"  ng-click="modal.show()">
+          <i class="icon ion-log-in"></i>
+        </a-->
+</ion-header-bar>
+
+<ion-view view-title="Nearby Gigs" ng-controller="LoginCtrl">
+    <ion-content>
+        <ion-refresher pulling-text="Pull to refresh..." on-refresh="getAllFeed()"></ion-refresher>
+        <label class="item item-input">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input type="search" placeholder="Search" ng-model="query">
+        </label>
+        <div class="list card" ng-repeat="gig in feed | filter: query | reverse">
+
+            <!--a class="button button-icon icon ion-flag icon-left" style="color: #444; width: 2%;" ng-click="flagGig(gig._id, gig.hidden, gig.flagged)">
+      </a-->
+
+            <div class="item header" ng-click="openModal()">
+                <div>
+                    <h2>Lookin4: {{gig.position}}</h2>
+                    <p>Rate: ${{gig.rate}}</p>
+                    <p>Date: {{gig.date|toDateString}}</p>
+                    <p>Requested by: {{gig.name}}</p>
+                </div>
+                <div>
+                    <img ng-src="http://graph.facebook.com/{{gig.userid}}/picture?width=270&height=270" />
+                </div>
+            </div>
+            <div class="header">
+                <a class="item item-icon-left assertive" style="color: #EF4739; width: 50%; border: 0;" href="#" ng-click="openModal()">
+                    <i class="icon ion-close assertive"></i> Delete
+                </a>
+                <a class="item item-icon-left" style="width: 50%; border: 0;" ng-click="openModal()">
+                    <i class="icon ion-checkmark"></i> Got it!
+                </a>
+            </div>
+
+        </div>
+    </ion-content>
+</ion-view>

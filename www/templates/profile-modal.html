@@ -1,0 +1,40 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-stable" >
+        <h1 class="title">{{toUser.name}}</h1>
+        <div class="button button-clear" ng-click="modal.hide()"><span class="icon ion-close" style="color: #ffffff"></span></div>
+    </ion-header-bar>
+  <ion-content>
+    <div class="list card">
+      <div class="item header header-profile" style="display: flex; justify-content: center">
+        <div>
+          <img ng-src="http://graph.facebook.com/{{toUser.userid}}/picture?width=270&height=270" />
+        </div>
+      </div>
+      <div class="item">
+        <label class="item item-input">
+          <span class="input-label">Name</span>
+          <input type="email" ng-model="toUser.name" style="background-color: white" readonly>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Email</span>
+          <input type="email" ng-model="toUser.email" style="background-color: white" readonly>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Telephone</span>
+          <input type="tel" ng-model="toUser.phone" style="background-color: white" maxlength="10" readonly>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Location</span>
+          <input type="email" ng-model="toUser.location" style="background-color: white" maxlength="10" readonly>
+        </label>
+       <label class="item item-input">
+          <span class="input-label">Caption</span>
+          <input type="text" ng-model="toUser.caption" style="background-color: white" maxlength="70" readonly>
+        </label>
+		<button class="button button-block button-balanced" ng-click="modal.hide(); showMessages(toUser.userid, toUser.name);" style="width: 90%; margin-left: 5%;">
+        	Send Message
+      	</button>
+      </div>
+    </div>
+  </ion-content>
+</ion-modal-view>

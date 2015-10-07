@@ -1,0 +1,47 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-stable" >
+        <h1 class="title">{{gig.position}}</h1>
+        <div class="button button-clear" ng-click="modal.hide()"><span class="icon ion-close" style="color: #ffffff"></span></div>
+    </ion-header-bar>
+    <ion-content>
+        <div class="item">
+
+        <label class="item item-input">
+          <span class="input-label">Rate:</span>
+          ${{gig.rate}}
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Date:</span>
+          {{gig.date|toDateString}}
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Requested by:</span>
+          {{gig.name}}
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Location:</span>
+          {{gig.location}}
+        </label>
+        <label class="item item-text-wrap">
+          <span  class="input-label">Description:</span>
+          {{gig.description}}
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Number Interested:</span>
+          {{gig.interested.length}}
+        </label>
+      <!--div ng-if="pageLocation === myinterests">
+        <label class="item item-input">
+          <span class="input-label">Miles Away:</span>
+          {{gig.miles}}
+        </label-->
+    <button class="button button-icon icon ion-flag icon-left" style="color: #FF0000;" ng-click="flagGig(gig._id, gig.hidden, gig.flagged);"
+     >
+          Flag Gig
+        </button>
+      <!--/div-->
+
+      </div>
+
+    </ion-content>
+</ion-view>
