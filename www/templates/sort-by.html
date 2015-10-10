@@ -1,0 +1,59 @@
+<ion-modal-view>
+	<ion-header-bar class="bar-stable"  align-title="left">
+        <h1 class="title" >Sort By</h1>
+        <div class="button button-clear" ng-click="closeModal2()"><span class="icon ion-close" style="color: #ffffff"></span></div>
+    </ion-header-bar>
+    <ion-content padding="true">
+     <!--div class="list">
+  </label>
+    <label class="item item-radio">
+    <input type="radio" name="group">
+    <div class="item-content">
+      Date
+    </div>
+    <i class="radio-icon ion-checkmark"></i>
+  </label>
+  <label class="item item-radio">
+    <input type="radio" name="group">
+    <div class="item-content"> 
+      Rate 
+    </div>
+    <i class="radio-icon ion-checkmark"></i>
+  </label>
+  <label class="item item-radio">
+    <input type="radio" name="group">
+    <div class="item-content">
+      Requester
+    </div>
+    <i class="radio-icon ion-checkmark"></i>
+  </label>
+    <label class="item item-radio">
+    <input type="radio" name="group">
+    <div class="item-content">
+      Location
+    </div>
+    <i class="radio-icon ion-checkmark"></i>
+
+
+
+</div>
+ <div class="item item-divider"> 
+          sortBy, Selected Value: {{ data.sortBy }}
+        </div-->
+        
+        <ion-radio ng-repeat="item in sortByList"
+                   ng-value="item.value"
+                   ng-model="data.sortBy">
+          {{ item.text }}
+        </ion-radio>
+        <!--div class="card">
+            <div class="item item-text-wrap">
+                <p> You are not allowed to post any type of illegal trade such as looking for sex, alcohol, or drugs. </p>
+                <p> Lookin4 will receive the following information from your facebook account: your name and email address.</p>
+            </div>
+        </div>
+        <center>
+            <button class="button button-block button-positive icon-left ion-social-facebook fb-login" ng-click="fbLogin()">Accept and Login</button>
+        </center-->
+    </ion-content>
+</ion-modal-view

@@ -7,18 +7,26 @@
   </div>
   <ion-content>
     <ion-refresher pulling-text="Pull to refresh..." on-refresh="getFeed()"></ion-refresher>
-    <label class="item item-input">
+    <div class="item item-input-inset">
+    <label class="item item-input" style="width: 90%; border: 0;">
       <i class="icon ion-search placeholder-icon"></i>
       <input type="search" placeholder="Search" ng-model="query">
     </label>
+    <button class="button button-icon icon ion-settings placeholder-icon" ng-click="openModal2()"></button>
+            <!--button class="button button-icon icon ion-settings placeholder-icon"  modal-select="" ng-model="sortOptions" options="selectables" modal-title="Sort By">
+          <div class="option">
+            {{option}}
+          </div>
+        </button-->    
+    </div>
     <div class="list card" ng-repeat="gig in feed | filter: query | reverse">
      
       <!--a class="button button-icon icon ion-flag icon-left" style="color: #444; width: 2%;" ng-click="flagGig(gig._id, gig.hidden, gig.flagged)">
       </a"updateUserModal(user.userid); openModal()"-->    
 
       <div class="item header" ng-click="updateGigModal(gig); openModal()">
-        <div>
-          <h2>Lookin4: {{gig.position}}</h2>
+        <div style="width: 77%; border: 0;">
+          <h2>{{gig.position}}</h2>
           <p>Rate: ${{gig.rate}}</p>
           <p>Date: {{gig.date|toDateString}}</p>
           <p>Requested by: {{gig.name}}</p>
@@ -29,7 +37,7 @@
             <p>Miles: {{gig.miles}}</p>
           </div>
         </div>
-        <div>
+        <div style="width: 23%; border: 0;">
           <img ng-src="http://graph.facebook.com/{{gig.userid}}/picture?width=270&height=270" />
         </div>
       </div>

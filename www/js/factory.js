@@ -378,6 +378,171 @@ angular.module('lookin4.factory', [])
            // }
 
         },
+        allTimeSorted: function(userID, callback) {
+            $http({
+                url: base + "/feed",
+                method: "POST",
+                data: {
+                    userID: userID
+                }
+             }).success(function(data, status, headers, config) {
+                arr = [];
+                angular.forEach(data, function(gig) {   
+                        arr.push({_id: gig._id, userid: gig.userid, name: gig.name, position: gig.position,
+                        rate: gig.rate, date: gig.date, description: gig.description, flagged: gig.flagged,
+                        interested: gig.interested, flaggedReason: gig.flaggedReason, hidden: gig.hidden, 
+                        location: gig.location
+                        });   
+                });
+                console.log(data);
+                console.log(arr);
+                callback(arr.sort(function(a,b) { return (new Date(a.date) - new Date(b.date)) }) );//
+            })
+            .error(function(data, status, headers, config) {            
+                return $http({
+                url: base + "/feed",
+                method: "POST",
+                data: {
+                    userID: userID
+                }
+                })
+            });
+        },
+        allRateSorted: function(userID, callback) {
+            $http({
+                url: base + "/feed",
+                method: "POST",
+                data: {
+                    userID: userID
+                }
+             }).success(function(data, status, headers, config) {
+                arr = [];
+                angular.forEach(data, function(gig) {   
+                        arr.push({_id: gig._id, userid: gig.userid, name: gig.name, position: gig.position,
+                        rate: gig.rate, date: gig.date, description: gig.description, flagged: gig.flagged,
+                        interested: gig.interested, flaggedReason: gig.flaggedReason, hidden: gig.hidden,
+                        location: gig.location
+                        });   
+                });
+                console.log(data);
+                console.log(arr);
+                callback(arr.sort(function(a,b) { return parseFloat(a.rate) - parseFloat(b.rate) }) );//
+            })
+            .error(function(data, status, headers, config) {            
+                return $http({
+                url: base + "/feed",
+                method: "POST",
+                data: {
+                    userID: userID
+                }
+                })
+            });
+        },
+        allNameSorted: function(userID, callback) {
+            $http({
+                url: base + "/feed",
+                method: "POST",
+                data: {
+                    userID: userID
+                }
+             }).success(function(data, status, headers, config) {
+                arr = [];
+                angular.forEach(data, function(gig) {   
+                        arr.push({_id: gig._id, userid: gig.userid, name: gig.name, position: gig.position,
+                        rate: gig.rate, date: gig.date, description: gig.description, flagged: gig.flagged,
+                        interested: gig.interested, flaggedReason: gig.flaggedReason, hidden: gig.hidden,
+                        location: gig.location
+                        });   
+                });
+                console.log(data);
+                console.log(arr);
+                callback(
+                arr.sort(function(a, b){
+                    if(a.position < b.position) return 1;
+                    if(a.position > b.position) return -1;
+                    return 0;
+                }) );//
+            })
+            .error(function(data, status, headers, config) {            
+                return $http({
+                url: base + "/feed",
+                method: "POST",
+                data: {
+                    userID: userID
+                }
+                })
+            });
+        },
+        allRequesterSorted: function(userID, callback) {
+            $http({
+                url: base + "/feed",
+                method: "POST",
+                data: {
+                    userID: userID
+                }
+             }).success(function(data, status, headers, config) {
+                arr = [];
+                angular.forEach(data, function(gig) {   
+                        arr.push({_id: gig._id, userid: gig.userid, name: gig.name, position: gig.position,
+                        rate: gig.rate, date: gig.date, description: gig.description, flagged: gig.flagged,
+                        interested: gig.interested, flaggedReason: gig.flaggedReason, hidden: gig.hidden,
+                        location: gig.location
+                        });   
+                });
+                console.log(data);
+                console.log(arr);
+                callback(
+                arr.sort(function(a, b){
+                    if(a.name < b.name) return 1;
+                    if(a.name > b.name) return -1;
+                    return 0;
+                }) );//
+            })
+            .error(function(data, status, headers, config) {            
+                return $http({
+                url: base + "/feed",
+                method: "POST",
+                data: {
+                    userID: userID
+                }
+                })
+            });
+        },
+        allLocationSorted: function(userID, callback) {
+            $http({
+                url: base + "/feed",
+                method: "POST",
+                data: {
+                    userID: userID
+                }
+             }).success(function(data, status, headers, config) {
+                arr = [];
+                angular.forEach(data, function(gig) {   
+                        arr.push({_id: gig._id, userid: gig.userid, name: gig.name, position: gig.position,
+                        rate: gig.rate, date: gig.date, description: gig.description, flagged: gig.flagged,
+                        interested: gig.interested, flaggedReason: gig.flaggedReason, hidden: gig.hidden,
+                        location: gig.location
+                        });   
+                });
+                console.log(data);
+                console.log(arr);
+                callback(
+                arr.sort(function(a, b){
+                    if(a.location < b.location) return 1;
+                    if(a.location > b.location) return -1;
+                    return 0;
+                }) );//
+            })
+            .error(function(data, status, headers, config) {            
+                return $http({
+                url: base + "/feed",
+                method: "POST",
+                data: {
+                    userID: userID
+                }
+                })
+            });
+        },
         allfeed: function(userID) {
             return $http({
                 url: base + "/allfeed",
