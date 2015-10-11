@@ -1,3 +1,8 @@
+/*ionic icon for settings icon */
+.item-input .icon {
+    min-width: 30px;
+}
+
 /* Empty. Add your own CSS if you like */
 .bar-stable{
   background-color: #2C3E50 !important;

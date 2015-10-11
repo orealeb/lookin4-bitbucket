@@ -5,6 +5,9 @@
         <param name="android-package" value="com.pushapps.phonegap.PushAppsPlugin" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="PushNotification">
+        <param name="android-package" onload="true" value="com.pushwoosh.plugin.pushnotifications.PushNotifications" />
+    </feature>
     <feature name="Clipboard">
         <param name="android-package" value="com.verso.cordova.clipboard.Clipboard" />
     </feature>
@@ -16,9 +19,6 @@
     </feature>
     <feature name="NetworkStatus">
         <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
-    </feature>
-    <feature name="PushNotification">
-        <param name="android-package" onload="true" value="com.pushwoosh.plugin.pushnotifications.PushNotifications" />
     </feature>
     <icon height="48" src="icons/logo.png" width="48" />
     <name>lookin4</name>

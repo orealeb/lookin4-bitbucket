@@ -8,6 +8,13 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/com.pushwoosh.plugins.pushwoosh/www/PushNotification.js",
+        "id": "com.pushwoosh.plugins.pushwoosh.PushNotification",
+        "clobbers": [
+            "plugins.pushNotification"
+        ]
+    },
+    {
         "file": "plugins/com.verso.cordova.clipboard/www/clipboard.js",
         "id": "com.verso.cordova.clipboard.Clipboard",
         "clobbers": [
@@ -43,25 +50,18 @@ module.exports = [
         "clobbers": [
             "Connection"
         ]
-    },
-    {
-        "file": "plugins/com.pushwoosh.plugins.pushwoosh/www/PushNotification.js",
-        "id": "com.pushwoosh.plugins.pushwoosh.PushNotification",
-        "clobbers": [
-            "plugins.pushNotification"
-        ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
     "com.pushapps.phonegap": "1.6.0",
+    "com.pushwoosh.plugins.pushwoosh": "3.5.4",
     "com.verso.cordova.clipboard": "0.1.0",
     "cordova-plugin-inappbrowser": "1.0.0-dev",
     "org.apache.cordova.device": "0.3.0",
     "org.apache.cordova.geolocation": "0.3.12",
-    "org.apache.cordova.network-information": "0.2.15",
-    "com.pushwoosh.plugins.pushwoosh": "3.5.4"
+    "org.apache.cordova.network-information": "0.2.15"
 }
 // BOTTOM OF METADATA
 });

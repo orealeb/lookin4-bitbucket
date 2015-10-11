@@ -49,8 +49,6 @@
         "source": {
             "type": "registry",
             "id": "com.pushwoosh.plugins.pushwoosh"
-        },
-        "is_top_level": true,
-        "variables": {}
+        }
     }
 }

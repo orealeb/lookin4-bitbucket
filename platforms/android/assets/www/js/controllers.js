@@ -90,6 +90,7 @@ angular.module('lookin4.controllers', [])
     });
 
     $scope.openModal = function() {
+        console.log("open");
         $scope.modal.show()
     }
 
@@ -105,6 +106,56 @@ angular.module('lookin4.controllers', [])
     {
             $scope.gig = gig;
     }
+
+
+  $scope.sortByList = [
+    { text: "Date", value: "0" },
+    { text: "Rate", value: "1" },
+    { text: "Location", value: "2" },
+    { text: "Gig Name", value: "3" },
+    { text: "Requester", value: "4" }
+  ];
+
+ $scope.data = {
+    sortBy: '0'
+  };
+
+        $ionicModal.fromTemplateUrl('templates/sort-by.html', {
+            scope: $scope
+        }).then(function(modal2) {
+            $scope.modal2 = modal2;
+        });
+
+        $scope.openModal2 = function() {
+            $scope.modal2.show()
+        }
+
+        $scope.closeModal2 = function() {
+            if($scope.data.sortBy == '0'){
+                $scope.getTimeSorted();
+            }
+            else if ($scope.data.sortBy == '1'){
+                $scope.getRateSorted();
+            }
+            else if($scope.data.sortBy == '2'){
+                $scope.getLocationSorted();
+            }
+            else if($scope.data.sortBy == '3'){
+                $scope.getNameSorted();
+            }
+            else if($scope.data.sortBy == '4'){
+                $scope.getRequesterSorted();
+            }
+            else
+            {
+               $scope.getFeed(); 
+            }
+            $scope.modal2.hide();
+        };
+
+        $scope.$on('$destroy', function() {
+            $scope.modal2.remove();
+        });
 
     $scope.registerDeviceForNotification = function(userID) {
         console.log(userID);
@@ -162,7 +213,7 @@ angular.module('lookin4.controllers', [])
                     function() {
                         $('#check').css('stroke-dashoffset', 0);
                     }, 1);
-                $scope.getFeed();
+                $scope.getTimeSorted(); //$scope.getFeed();
                 setTimeout(
                     function() {
                         $('#check').css('stroke-dashoffset', 130);
@@ -175,7 +226,8 @@ angular.module('lookin4.controllers', [])
     $scope.notInterested = function(tID) {
         GigAPI.notInterested($scope.user.id, tID)
             .success(function(data, status, headers, config) {
-                $scope.getLocationBasedFeed($scope.lat, $scope.longi);
+                $scope.getFeed();
+                //$scope.getLocationBasedFeed($scope.lat, $scope.longi);
             });
     }
     $scope.getDescription = function(description, tID, hidden, flagged) {
@@ -258,7 +310,7 @@ angular.module('lookin4.controllers', [])
                                  $scope.$parent.$parent.$parent.user = data;
                                  console.log($scope.$parent.$parent.$parent.user);
                             })
-                            $scope.getFeed();
+                            $scope.getTimeSorted();//$scope.getFeed();
 
                         })
                         .error(function(data, headers, config, status) {
@@ -272,7 +324,141 @@ angular.module('lookin4.controllers', [])
         }
 
 
-
+    $scope.getTimeSorted = function() {
+        if($scope.user.userid){
+            UserAPI.get($scope.user.userid).success(function(data, status, headers, config) {
+                console.log(data.deviceToken);
+                $scope.registerDeviceForNotification($scope.user.userid);
+            });
+            GigAPI.allTimeSorted($scope.user.userid, function (gigs) {
+                $scope.feed = gigs;
+                console.log( $scope.feed);
+                $scope.$broadcast('scroll.refreshComplete');
+             // body...
+            });
+        }
+        else
+        {                 
+            UserAPI.get($scope.user.id).success(function(data, status, headers, config) {
+                console.log(data.deviceToken);
+                $scope.registerDeviceForNotification($scope.user.id);
+            });   
+            GigAPI.allTimeSorted($scope.user.id, function (gigs) {
+                $scope.feed = gigs;
+                console.log( $scope.feed);
+                $scope.$broadcast('scroll.refreshComplete');
+             // body...
+            });      
+        }
+    }
+    $scope.getRateSorted = function() {
+        if($scope.user.userid){
+            UserAPI.get($scope.user.userid).success(function(data, status, headers, config) {
+                console.log(data.deviceToken);
+                $scope.registerDeviceForNotification($scope.user.userid);
+            });
+            GigAPI.allRateSorted($scope.user.userid, function (gigs) {
+                $scope.feed = gigs;
+                console.log( $scope.feed);
+                $scope.$broadcast('scroll.refreshComplete');
+             // body...
+            });
+        }
+        else
+        {                 
+            UserAPI.get($scope.user.id).success(function(data, status, headers, config) {
+                console.log(data.deviceToken);
+                $scope.registerDeviceForNotification($scope.user.id);
+            });   
+            GigAPI.allRateSorted($scope.user.id, function (gigs) {
+                $scope.feed = gigs;
+                console.log( $scope.feed);
+                $scope.$broadcast('scroll.refreshComplete');
+             // body...
+            });      
+        }
+    }
+        $scope.getNameSorted = function() {
+        if($scope.user.userid){
+            UserAPI.get($scope.user.userid).success(function(data, status, headers, config) {
+                console.log(data.deviceToken);
+                $scope.registerDeviceForNotification($scope.user.userid);
+            });
+            GigAPI.allNameSorted($scope.user.userid, function (gigs) {
+                $scope.feed = gigs;
+                console.log( $scope.feed);
+                $scope.$broadcast('scroll.refreshComplete');
+             // body...
+            });
+        }
+        else
+        {                 
+            UserAPI.get($scope.user.id).success(function(data, status, headers, config) {
+                console.log(data.deviceToken);
+                $scope.registerDeviceForNotification($scope.user.id);
+            });   
+            GigAPI.allNameSorted($scope.user.id, function (gigs) {
+                $scope.feed = gigs;
+                console.log( $scope.feed);
+                $scope.$broadcast('scroll.refreshComplete');
+             // body...
+            });      
+        }
+    }
+            $scope.getRequesterSorted = function() {
+        if($scope.user.userid){
+            UserAPI.get($scope.user.userid).success(function(data, status, headers, config) {
+                console.log(data.deviceToken);
+                $scope.registerDeviceForNotification($scope.user.userid);
+            });
+            GigAPI.allRequesterSorted($scope.user.userid, function (gigs) {
+                $scope.feed = gigs;
+                console.log( $scope.feed);
+                $scope.$broadcast('scroll.refreshComplete');
+             // body...
+            });
+        }
+        else
+        {                 
+            UserAPI.get($scope.user.id).success(function(data, status, headers, config) {
+                console.log(data.deviceToken);
+                $scope.registerDeviceForNotification($scope.user.id);
+            });   
+            GigAPI.allRequesterSorted($scope.user.id, function (gigs) {
+                $scope.feed = gigs;
+                console.log( $scope.feed);
+                $scope.$broadcast('scroll.refreshComplete');
+             // body...
+            });      
+        }
+    }
+      $scope.getLocationSorted = function() {
+        if($scope.user.userid){
+            UserAPI.get($scope.user.userid).success(function(data, status, headers, config) {
+                console.log(data.deviceToken);
+                $scope.registerDeviceForNotification($scope.user.userid);
+            });
+            GigAPI.allLocationSorted($scope.user.userid, function (gigs) {
+                $scope.feed = gigs;
+                console.log( $scope.feed);
+                $scope.$broadcast('scroll.refreshComplete');
+             // body...
+            });
+        }
+        else
+        {                 
+            UserAPI.get($scope.user.id).success(function(data, status, headers, config) {
+                console.log(data.deviceToken);
+                $scope.registerDeviceForNotification($scope.user.id);
+            });   
+            GigAPI.allLocationSorted($scope.user.id, function (gigs) {
+                $scope.feed = gigs;
+                console.log( $scope.feed);
+                $scope.$broadcast('scroll.refreshComplete');
+             // body...
+            });      
+        }
+    }
     $scope.getFeed = function() {
         if($scope.user.userid){
             UserAPI.get($scope.user.userid).success(function(data, status, headers, config) {
@@ -297,9 +483,6 @@ angular.module('lookin4.controllers', [])
                 $scope.$broadcast('scroll.refreshComplete');
             });        
         }
-
-
-
     }
 
 })

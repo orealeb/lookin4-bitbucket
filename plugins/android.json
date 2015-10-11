@@ -29,6 +29,10 @@
                     ],
                     "/*": [
                         {
+                            "xml": "<feature name=\"PushNotification\"><param name=\"android-package\" onload=\"true\" value=\"com.pushwoosh.plugin.pushnotifications.PushNotifications\" /></feature>",
+                            "count": 1
+                        },
+                        {
                             "xml": "<feature name=\"Clipboard\"><param name=\"android-package\" value=\"com.verso.cordova.clipboard.Clipboard\" /></feature>",
                             "count": 1
                         },
@@ -42,10 +46,6 @@
                         },
                         {
                             "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"PushNotification\"><param name=\"android-package\" onload=\"true\" value=\"com.pushwoosh.plugin.pushnotifications.PushNotifications\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -165,6 +165,9 @@
         "com.pushapps.phonegap": {
             "PACKAGE_NAME": "com.ionicframework.lookin2"
         },
+        "com.pushwoosh.plugins.pushwoosh": {
+            "PACKAGE_NAME": "com.ionicframework.lookin2"
+        },
         "com.verso.cordova.clipboard": {
             "PACKAGE_NAME": "com.ionicframework.lookin2"
         },
@@ -178,9 +181,6 @@
             "PACKAGE_NAME": "com.ionicframework.lookin2"
         },
         "org.apache.cordova.network-information": {
-            "PACKAGE_NAME": "com.ionicframework.lookin2"
-        },
-        "com.pushwoosh.plugins.pushwoosh": {
             "PACKAGE_NAME": "com.ionicframework.lookin2"
         }
     },
