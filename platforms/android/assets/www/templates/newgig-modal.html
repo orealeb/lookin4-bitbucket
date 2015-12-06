@@ -1,0 +1,27 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-stable" >
+        <h1 class="title">Share on Facebook</h1>
+        <div class="button button-clear" ng-click="modal.hide(); redirect()"><span class="icon ion-close" style="color: #ffffff"></span></div>
+    </ion-header-bar>
+    <ion-content>
+        <div class="item">
+        <label class="item item-input">
+        
+                  <span class="input-label">Your gig has been posted.</span>
+        </label>
+ <label class="item item-input">
+        <span class="input-label"> Would you like to share it on social media?</span>
+</label>
+        <center>
+        <button class="button button-icon icon ion-social-facebook icon-left" style="color: #3b5998;" ng-click="shareGig();"
+     >
+          Share
+        </button>
+      </center>
+        <!--button ng-click="redirect();">
+          Done
+        </button-->
+      </div>
+
+    </ion-content>
+</ion-view>

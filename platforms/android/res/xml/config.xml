@@ -1,6 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.ionicframework.lookin2" version="0.0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <preference name="loglevel" value="DEBUG" />
+    <feature name="SocialMessage">
+        <param name="android-package" value="uk.co.ilee.socialmessage.SocialMessage" />
+    </feature>
     <feature name="PushAppsPlugin">
         <param name="android-package" value="com.pushapps.phonegap.PushAppsPlugin" />
         <param name="onload" value="true" />

@@ -50,5 +50,13 @@
             "type": "registry",
             "id": "com.pushwoosh.plugins.pushwoosh"
         }
+    },
+    "cordova-plugin-social-message": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-social-message"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

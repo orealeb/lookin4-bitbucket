@@ -487,8 +487,27 @@ angular.module('lookin4.controllers', [])
 
 })
 
-.controller('NewGigCtrl', function($scope, $location, $ionicPopup, GigAPI, cordovaGeolocationService) {
-        var firstDay = new Date();
+.controller('NewGigCtrl', function($scope, $location, $ionicPopup, GigAPI, $ionicModal, cordovaGeolocationService) {
+    $ionicModal.fromTemplateUrl('templates/newgig-modal.html', {
+        scope: $scope,
+        animation: 'fade-in'
+    }).then(function(modal) {
+        $scope.modal = modal;
+    });
+    $scope.openModal = function() {
+        $scope.modal.show()
+    }
+
+    $scope.closeModal = function() {
+        $scope.modal.hide();
+        $scope.redirect();
+    };
+
+    $scope.$on('$destroy', function() {
+        $scope.modal.remove();
+    });
+
+    var firstDay = new Date();
     $scope.currentNewGig = {
             date: firstDay,
             //lat: lat,
@@ -546,11 +565,12 @@ angular.module('lookin4.controllers', [])
          GigAPI.new($scope.$parent.$parent.$parent.user.userid, $scope.$parent.$parent.$parent.user.name, $scope.currentNewGig.date, 
                     $scope.currentNewGig.position, $scope.currentNewGig.rate, $scope.currentNewGig.description, 0, 0, $scope.currentNewGig.location) //location
             .success(function(data, status, headers, config) {
-                var alertPopup = $ionicPopup.alert({
+                $scope.openModal();
+                /**var alertPopup = $ionicPopup.alert({
                     title: 'Your gig has been posted'
                 });
                 alertPopup.then();
-                $location.path('/app/search');
+                $location.path('/app/search');**/
             })
             .error(function(data, status, headers, config) {
                 var alertPopup = $ionicPopup.alert({
@@ -561,6 +581,22 @@ angular.module('lookin4.controllers', [])
     //}
 
     }
+
+       $scope.shareGig = function() {
+        var message = {
+            subject: $scope.currentNewGig.position,
+            text:  "I am lookin4: " + $scope.currentNewGig.position + " \n" + $scope.currentNewGig.description + " \n" + "Time: " + $scope.currentNewGig.date + " \n" + "Location: " + $scope.currentNewGig.location + " \n" ,
+            activityTypes: ["PostToFacebook", "PostToTwitter", "PostToViber", "PostToWhatsApp", "Mail"]//,
+            //image: "https://bytebucket.org/orealeb/lookin4-sports/raw/f7e0bdd2274add063ae9261ae5ce068d4156a95e/icons/logo.png?token=51e2386fb077c346bb6a5c6ef67cbc419387f5a5"
+        };
+        window.socialmessage.send(message);
+    } 
+
+    $scope.redirect = function() {
+        $location.path('/app/search');
+    }
+
+
 
 })
 

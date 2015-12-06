@@ -5,29 +5,13 @@
     },
     "config_munge": {
         "files": {
-            "undefined": {
-                "parents": {
-                    "undefined": [
-                        {
-                            "xml": "<access origin=\"*.pushapps.mobi\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<access origin=\"*.pushwoosh.com\" />",
-                            "count": 1
-                        }
-                    ]
-                }
-            },
             "res/xml/config.xml": {
                 "parents": {
-                    "/widget": [
-                        {
-                            "xml": "<feature name=\"PushAppsPlugin\"><param name=\"android-package\" value=\"com.pushapps.phonegap.PushAppsPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
-                            "count": 1
-                        }
-                    ],
                     "/*": [
+                        {
+                            "xml": "<feature name=\"SocialMessage\"><param name=\"android-package\" value=\"uk.co.ilee.socialmessage.SocialMessage\" /></feature>",
+                            "count": 1
+                        },
                         {
                             "xml": "<feature name=\"PushNotification\"><param name=\"android-package\" onload=\"true\" value=\"com.pushwoosh.plugin.pushnotifications.PushNotifications\" /></feature>",
                             "count": 1
@@ -48,22 +32,38 @@
                             "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
                             "count": 1
                         }
+                    ],
+                    "/widget": [
+                        {
+                            "xml": "<feature name=\"PushAppsPlugin\"><param name=\"android-package\" value=\"com.pushapps.phonegap.PushAppsPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        }
                     ]
                 }
             },
             "AndroidManifest.xml": {
                 "parents": {
+                    "/*": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
+                            "count": 1
+                        }
+                    ],
                     "/manifest": [
                         {
                             "xml": "<permission android:name=\"com.ionicframework.lookin2.permission.C2D_MESSAGE\" android:protectionLevel=\"signature\" />",
-                            "count": 2
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
-                            "count": 2
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.VIBRATE\" />",
                             "count": 2
                         },
                         {
@@ -75,14 +75,6 @@
                             "count": 1
                         },
                         {
-                            "xml": "<uses-permission android:name=\"android.permission.WAKE_LOCK\" />",
-                            "count": 2
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"com.google.android.c2dm.permission.RECEIVE\" />",
-                            "count": 2
-                        },
-                        {
                             "xml": "<uses-permission android:name=\"com.ionicframework.lookin2.permission.C2D_MESSAGE\" />",
                             "count": 2
                         },
@@ -91,7 +83,23 @@
                             "count": 1
                         },
                         {
+                            "xml": "<uses-permission android:name=\"android.permission.VIBRATE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.WAKE_LOCK\" />",
+                            "count": 1
+                        },
+                        {
                             "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"com.google.android.c2dm.permission.RECEIVE\" />",
                             "count": 1
                         }
                     ],
@@ -142,18 +150,18 @@
                             "xml": "<intent-filter><action android:name=\"com.ionicframework.lookin2.MESSAGE\" /><category android:name=\"android.intent.category.DEFAULT\" /></intent-filter>",
                             "count": 2
                         }
-                    ],
-                    "/*": [
+                    ]
+                }
+            },
+            "undefined": {
+                "parents": {
+                    "undefined": [
                         {
-                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
+                            "xml": "<access origin=\"*.pushapps.mobi\" />",
                             "count": 1
                         },
                         {
-                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
+                            "xml": "<access origin=\"*.pushwoosh.com\" />",
                             "count": 1
                         }
                     ]
@@ -162,6 +170,9 @@
         }
     },
     "installed_plugins": {
+        "cordova-plugin-social-message": {
+            "PACKAGE_NAME": "com.ionicframework.lookin2"
+        },
         "com.pushapps.phonegap": {
             "PACKAGE_NAME": "com.ionicframework.lookin2"
         },
@@ -182,10 +193,85 @@
         },
         "org.apache.cordova.network-information": {
             "PACKAGE_NAME": "com.ionicframework.lookin2"
-        },
-        "cordova-plugin-social-message": {
-            "PACKAGE_NAME": "com.ionicframework.lookin2"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {},
+    "modules": [
+        {
+            "file": "plugins/cordova-plugin-social-message/www/socialmessage.js",
+            "id": "cordova-plugin-social-message.SocialMessage",
+            "pluginId": "cordova-plugin-social-message",
+            "clobbers": [
+                "socialmessage"
+            ]
+        },
+        {
+            "file": "plugins/com.pushapps.phonegap/www/pushapps.js",
+            "id": "com.pushapps.phonegap.PushApps",
+            "pluginId": "com.pushapps.phonegap",
+            "clobbers": [
+                "PushNotification"
+            ]
+        },
+        {
+            "file": "plugins/com.pushwoosh.plugins.pushwoosh/www/PushNotification.js",
+            "id": "com.pushwoosh.plugins.pushwoosh.PushNotification",
+            "pluginId": "com.pushwoosh.plugins.pushwoosh",
+            "clobbers": [
+                "plugins.pushNotification"
+            ]
+        },
+        {
+            "file": "plugins/com.verso.cordova.clipboard/www/clipboard.js",
+            "id": "com.verso.cordova.clipboard.Clipboard",
+            "pluginId": "com.verso.cordova.clipboard",
+            "clobbers": [
+                "cordova.plugins.clipboard"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+            "id": "cordova-plugin-inappbrowser.inappbrowser",
+            "pluginId": "cordova-plugin-inappbrowser",
+            "clobbers": [
+                "cordova.InAppBrowser.open",
+                "window.open"
+            ]
+        },
+        {
+            "file": "plugins/org.apache.cordova.device/www/device.js",
+            "id": "org.apache.cordova.device.device",
+            "pluginId": "org.apache.cordova.device",
+            "clobbers": [
+                "device"
+            ]
+        },
+        {
+            "file": "plugins/org.apache.cordova.network-information/www/network.js",
+            "id": "org.apache.cordova.network-information.network",
+            "pluginId": "org.apache.cordova.network-information",
+            "clobbers": [
+                "navigator.connection",
+                "navigator.network.connection"
+            ]
+        },
+        {
+            "file": "plugins/org.apache.cordova.network-information/www/Connection.js",
+            "id": "org.apache.cordova.network-information.Connection",
+            "pluginId": "org.apache.cordova.network-information",
+            "clobbers": [
+                "Connection"
+            ]
+        }
+    ],
+    "plugin_metadata": {
+        "cordova-plugin-social-message": "0.3.1",
+        "com.pushapps.phonegap": "1.6.0",
+        "com.pushwoosh.plugins.pushwoosh": "3.5.4",
+        "com.verso.cordova.clipboard": "0.1.0",
+        "cordova-plugin-inappbrowser": "1.0.0-dev",
+        "org.apache.cordova.device": "0.3.0",
+        "org.apache.cordova.geolocation": "0.3.12",
+        "org.apache.cordova.network-information": "0.2.15"
+    }
 }

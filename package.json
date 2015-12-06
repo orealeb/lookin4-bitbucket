@@ -21,7 +21,8 @@
     "org.apache.cordova.device",
     "https://github.com/PushAppsService/PushAppsPhonegap.git",
     "org.apache.cordova.geolocation",
-    "com.pushwoosh.plugins.pushwoosh"
+    "com.pushwoosh.plugins.pushwoosh",
+    "cordova-plugin-social-message"
   ],
   "cordovaPlatforms": []
 }
